@@ -1,0 +1,83 @@
+
+body{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+main,section.row , aside.row{
+	margin: 0;
+	padding: 0;
+	position: relative;
+	height: 100%;
+}
+main{
+	width: 100%;
+}
+aside{
+	float: left;
+	width: 30%;
+	background: #f57c00;
+	box-shadow: 0 0 5px rgba(33, 33, 33, 0.5);
+	z-index: 1;
+}
+
+section.row{
+	float: right;
+	width: 70%;
+	background: #ffe0b2;
+
+}
+section > .box-message {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	margin: 0;
+	background: white;
+}/*
+section > .box-message > input {
+	width: 80%;
+	height: 30px;
+	border: 0;
+	border-bottom: 1px solid #727272;
+	outline: none;
+}
+
+section > .box-message > button {
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	border: 0;
+	border-bottom: 1px solid #727272;
+	outline: none;
+	padding: 5px;
+}
+.modal{
+	display: none;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: rgba(33, 33, 33, 0.5);
+	top: 0;
+	left: 0;
+}
+.modal.active{
+	display: inherit;
+	z-index: 2;
+}
+.modal-content{
+	border-radius: 1px;
+	box-shadow: 0 0 5px rgba(33, 33, 33, 0.5);
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 50%;
+	top: 50%;
+	margin-left: -25%;
+	margin-top: -15%;
+	background: white;
+}*/
