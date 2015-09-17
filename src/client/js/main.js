@@ -18,6 +18,7 @@
 			return this._users;
 		},
 		set users (value){
+			console.log(this.currentUser);
 			delete value[this.currentUser.id];
 			this._users = value;
 			this.paintListUsers();
@@ -25,9 +26,14 @@
 		paintListUsers : function () {
 			var users = [];
 			for(var index in this.users){
-				users.push({content : compile('users-template',{name : this.users[index]}) });
+				users.push({content : compile('users-template',{name : this.users[index] , id : index}) });
 			}
-			$('#user-list').html(compile('list-users-template',{users : users}));
+			if(users.length !== 0){
+				$('#user-list').html(compile('list-users-template',{users : users}));
+				$('.user-chat').click(function () {
+					socket.emit('joinChat',$(this).attr('id'));
+				})
+			}
 		}
 	};
 
@@ -64,12 +70,21 @@
 		socket.on('welcome',function (user) {
 			if(!user) return;
 			chat.currentUser = user;
+			console.log(user);
 			$(modalLogin).closeModal();
 			Materialize.toast('Welcome ' + user.name, 4000);
 		});
 
 		socket.on('updateUsers',function 	(userList) {
-			updateUsers(userList);
+			var timer = setInterval(function () {
+				if(chat.currentUser){
+					clearInterval(timer);
+					updateUsers(userList);
+				}
+			},500);
+		});
+		socket.on('joined',function (room) {
+			console.log(room);
 		});
 
 	}
